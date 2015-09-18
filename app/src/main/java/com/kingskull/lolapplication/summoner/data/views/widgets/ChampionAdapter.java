@@ -6,16 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.kingskull.lolapplication.R;
-import com.kingskull.lolapplication.api.restfull.connections.RIOT;
+import com.kingskull.lolapplication.api.restfull.connections.SILVERCODING;
 import com.kingskull.lolapplication.controllers.SummonerUtils;
 import com.kingskull.lolapplication.models.pojos.ranked.ChampionRankedStat;
 import com.koushikdutta.ion.Ion;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +52,7 @@ public class ChampionAdapter extends RecyclerView.Adapter<ChampionAdapter.MyView
 
         Ion.with(holder.championBackground).placeholder(context.getResources().getDrawable(R.drawable.dummie))
                 .error(context.getResources().getDrawable(R.drawable.dummie))
-                .load(RIOT.CHAMPIONS_MINIIMAGES_URL + stat.getId() + ".png");
+                .load(SILVERCODING.CHAMPIONS_MINIIMAGES_URL + stat.getId() + ".png");
     }
 
     @Override
