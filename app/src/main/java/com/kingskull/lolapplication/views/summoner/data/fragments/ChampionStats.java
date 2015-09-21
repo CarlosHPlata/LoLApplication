@@ -1,5 +1,6 @@
 package com.kingskull.lolapplication.views.summoner.data.fragments;
 
+import android.app.Dialog;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -62,6 +63,20 @@ public class ChampionStats extends Fragment {
 
         drawerList.setAdapter(adapter);
         drawerList.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        adapter.setOnItemClickListener(new ChampionAdapter.ItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+
+                Dialog dialog = new Dialog(getActivity());
+
+                View view = getActivity().getLayoutInflater().inflate(R.layout.single_champion_card, null);
+
+                dialog.setContentView(view);
+                dialog.show();
+
+            }
+        });
 
         return fragment;
     }
