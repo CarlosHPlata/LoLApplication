@@ -4,7 +4,7 @@
     xmlns:foo="http://schemas.android.com/apk/res-auto"
     xmlns:circular="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
-    tools:context="com.kingskull.lolapplication.summoner.data.views.fragments.SummonerInfo">
+    tools:context="com.kingskull.lolapplication.views.summoner.data.fragments.SummonerInfo">
 
     <ScrollView
         android:layout_width="wrap_content"
@@ -52,7 +52,7 @@
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="10dp">
 
-                            <com.kingskull.lolapplication.summoner.data.views.widgets.FontTextView
+                            <com.kingskull.lolapplication.views.widgets.FontTextView
                                 foo:customFont="Gravity-Bold.ttf"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
                                 android:id="@+id/win_points"
                                 android:layout_gravity="center_vertical" />
 
-                            <com.kingskull.lolapplication.summoner.data.views.widgets.FontTextView
+                            <com.kingskull.lolapplication.views.widgets.FontTextView
                                 foo:customFont="Gravity-Bold.ttf"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical">
 
-                            <com.kingskull.lolapplication.summoner.data.views.widgets.FontTextView
+                            <com.kingskull.lolapplication.views.widgets.FontTextView
                                 foo:customFont="Gravity-Bold.ttf"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
                                 android:id="@+id/lose_points"
                                 android:layout_gravity="center_vertical" />
 
-                            <com.kingskull.lolapplication.summoner.data.views.widgets.FontTextView
+                            <com.kingskull.lolapplication.views.widgets.FontTextView
                                 foo:customFont="Gravity-Bold.ttf"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -125,7 +125,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical">
 
-                            <com.kingskull.lolapplication.summoner.data.views.widgets.FontTextView
+                            <com.kingskull.lolapplication.views.widgets.FontTextView
                                 foo:customFont="Gravity-Bold.ttf"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -136,7 +136,7 @@
                                 android:id="@+id/played_ponts"
                                 android:layout_gravity="center_vertical" />
 
-                            <com.kingskull.lolapplication.summoner.data.views.widgets.FontTextView
+                            <com.kingskull.lolapplication.views.widgets.FontTextView
                                 foo:customFont="Gravity-Bold.ttf"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -161,7 +161,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical">
 
-                            <com.kingskull.lolapplication.summoner.data.views.widgets.CircularProgressBar
+                            <com.kingskull.lolapplication.views.widgets.CircularProgressBar
                                 android:id="@+id/winratepercentage"
                                 style="@style/Widget.ProgressBar.Holo.CircularProgressBar"
                                 android:layout_width="50dp"
@@ -173,11 +173,11 @@
                                 android:layout_alignParentTop="true"
                                 android:layout_centerHorizontal="true" />
 
-                            <com.kingskull.lolapplication.summoner.data.views.widgets.FontTextView
+                            <com.kingskull.lolapplication.views.widgets.FontTextView
                                 foo:customFont="Gravity-Bold.ttf"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="WIN RATE"
+                                android:text="PERFORMANCE"
                                 android:textSize="7dp"
                                 android:id="@+id/textView"
                                 android:textColor="@color/grey_text"
@@ -222,7 +222,7 @@
 
                     </FrameLayout>
 
-                    <com.kingskull.lolapplication.summoner.data.views.widgets.FontTextView
+                    <com.kingskull.lolapplication.views.widgets.FontTextView
                         foo:customFont="Gravity-UltraLight.ttf"
                         android:layout_width="wrap_content"
                         android:textColor="@color/golden_text"
@@ -254,7 +254,7 @@
                 android:id="@+id/ranked_stats"
                 android:layout_centerHorizontal="true">
 
-                <com.kingskull.lolapplication.summoner.data.views.widgets.FontTextView
+                <com.kingskull.lolapplication.views.widgets.FontTextView
                     foo:customFont="Gravity-Light.ttf"
                     android:textColor="@color/golden_text"
                     android:layout_width="wrap_content"
@@ -262,7 +262,7 @@
                     android:text="MINIONS KILLED PER GAME:"
                     android:id="@+id/textView2"/>
 
-                <com.kingskull.lolapplication.summoner.data.views.widgets.FontTextView
+                <com.kingskull.lolapplication.views.widgets.FontTextView
                     foo:customFont="Gravity-Light.ttf"
                     android:textColor="@color/golden_text"
                     android:layout_width="wrap_content"
@@ -272,7 +272,7 @@
                     android:layout_marginTop="30dp"
                     android:id="@+id/textViewLol"/>
 
-                <com.kingskull.lolapplication.summoner.data.views.widgets.FontTextView
+                <com.kingskull.lolapplication.views.widgets.FontTextView
                     foo:customFont="Gravity-Light.ttf"
                     android:textColor="@color/golden_text"
                     android:layout_width="wrap_content"
@@ -282,7 +282,7 @@
                     android:layout_below="@+id/textViewLol"
                     android:layout_marginTop="30dp" />
 
-                <com.kingskull.lolapplication.summoner.data.views.widgets.FontTextView
+                <com.kingskull.lolapplication.views.widgets.FontTextView
                     foo:customFont="Gravity-Light.ttf"
                     android:textColor="@color/golden_text"
                     android:layout_width="wrap_content"
@@ -292,7 +292,7 @@
                     android:layout_below="@+id/textView3"
                     android:layout_marginTop="30dp" />
 
-                <com.kingskull.lolapplication.summoner.data.views.widgets.FontTextView
+                <com.kingskull.lolapplication.views.widgets.FontTextView
                     foo:customFont="Gravity-Light.ttf"
                     android:textColor="@color/golden_text"
                     android:layout_width="wrap_content"
@@ -304,7 +304,7 @@
                     android:layout_toEndOf="@+id/textView2"
                     android:layout_marginLeft="57dp" />
 
-                <com.kingskull.lolapplication.summoner.data.views.widgets.FontTextView
+                <com.kingskull.lolapplication.views.widgets.FontTextView
                     foo:customFont="Gravity-Light.ttf"
                     android:textColor="@color/golden_text"
                     android:layout_width="wrap_content"
@@ -315,7 +315,7 @@
                     android:layout_alignLeft="@+id/minions"
                     android:layout_alignStart="@+id/minions" />
 
-                <com.kingskull.lolapplication.summoner.data.views.widgets.FontTextView
+                <com.kingskull.lolapplication.views.widgets.FontTextView
                     foo:customFont="Gravity-Light.ttf"
                     android:textColor="@color/golden_text"
                     android:layout_width="wrap_content"
@@ -326,7 +326,7 @@
                     android:layout_alignLeft="@+id/turrets"
                     android:layout_alignStart="@+id/turrets" />
 
-                <com.kingskull.lolapplication.summoner.data.views.widgets.FontTextView
+                <com.kingskull.lolapplication.views.widgets.FontTextView
                     foo:customFont="Gravity-Light.ttf"
                     android:textColor="@color/golden_text"
                     android:layout_width="wrap_content"
@@ -337,7 +337,7 @@
                     android:layout_alignLeft="@+id/minions"
                     android:layout_alignStart="@+id/minions" />
 
-                <com.kingskull.lolapplication.summoner.data.views.widgets.FontTextView
+                <com.kingskull.lolapplication.views.widgets.FontTextView
                     foo:customFont="Gravity-Light.ttf"
                     android:textColor="@color/golden_text"
                     android:layout_width="wrap_content"
@@ -363,21 +363,21 @@
                 android:layout_below="@+id/frameLayout"
                 android:layout_marginTop="15dp">
 
-                <com.kingskull.lolapplication.summoner.data.views.widgets.FontTextView
+                <com.kingskull.lolapplication.views.widgets.FontTextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     foo:customFont="Gravity-Book.ttf"
                     android:textColor="@color/grey_text"
                     android:background="@drawable/kda_gold"
                     android:text="300k\nD"
-                    android:id="@+id/deaths_champion"
+                    android:id="@+id/deaths_single_champion"
                     android:gravity="center"
                     android:paddingTop="25dp"
                     android:paddingBottom="25dp"
                     android:textSize="20dp"
                     android:layout_centerHorizontal="true" />
 
-                <com.kingskull.lolapplication.summoner.data.views.widgets.FontTextView
+                <com.kingskull.lolapplication.views.widgets.FontTextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     foo:customFont="Gravity-Book.ttf"
@@ -389,12 +389,12 @@
                     android:paddingTop="25dp"
                     android:paddingBottom="25dp"
                     android:textSize="20dp"
-                    android:layout_alignTop="@+id/deaths_champion"
-                    android:layout_toLeftOf="@+id/deaths_champion"
-                    android:layout_toStartOf="@+id/deaths_champion"
+                    android:layout_alignTop="@+id/deaths_single_champion"
+                    android:layout_toLeftOf="@+id/deaths_single_champion"
+                    android:layout_toStartOf="@+id/deaths_single_champion"
                     android:layout_marginRight="20dp" />
 
-                <com.kingskull.lolapplication.summoner.data.views.widgets.FontTextView
+                <com.kingskull.lolapplication.views.widgets.FontTextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     foo:customFont="Gravity-Book.ttf"
@@ -406,23 +406,23 @@
                     android:gravity="center"
                     android:paddingTop="25dp"
                     android:paddingBottom="25dp"
-                    android:layout_alignTop="@+id/deaths_champion"
-                    android:layout_toRightOf="@+id/deaths_champion"
-                    android:layout_toEndOf="@+id/deaths_champion"
+                    android:layout_alignTop="@+id/deaths_single_champion"
+                    android:layout_toRightOf="@+id/deaths_single_champion"
+                    android:layout_toEndOf="@+id/deaths_single_champion"
                     android:layout_marginLeft="20dp" />
 
-                <com.kingskull.lolapplication.summoner.data.views.widgets.FontTextView
+                <com.kingskull.lolapplication.views.widgets.FontTextView
                     foo:customFont="Gravity-Book.ttf"
                     android:textColor="@color/grey_text"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="KDA: 1.5"
                     android:id="@+id/kda_perc"
-                    android:layout_below="@+id/deaths_champion"
+                    android:layout_below="@+id/deaths_single_champion"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="15dp" />
 
-                <com.kingskull.lolapplication.summoner.data.views.widgets.FontTextView
+                <com.kingskull.lolapplication.views.widgets.FontTextView
                     foo:customFont="Gravity-Light.ttf"
                     android:textSize="10dp"
                     android:textColor="@color/grey_sweet_text"

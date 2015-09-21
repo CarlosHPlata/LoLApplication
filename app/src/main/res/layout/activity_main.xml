@@ -31,7 +31,7 @@
         android:orientation="vertical"
         android:id="@+id/content_summoner">
 
-        <com.kingskull.lolapplication.summoner.data.views.widgets.FontTextView
+        <com.kingskull.lolapplication.views.widgets.FontTextView
             foo:customFont="Gravity-Light.ttf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
             android:paddingTop="20dp"
             android:layout_marginBottom="5dp"/>
 
-        <com.kingskull.lolapplication.summoner.data.views.widgets.SlidingTabLayout
+        <com.kingskull.lolapplication.views.summoner.data.widgets.SlidingTabLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="5dp"

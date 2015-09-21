@@ -8,6 +8,9 @@ import com.kingskull.lolapplication.models.pojos.ranked.ChampionRankedStat;
  */
 public class SummonerUtils {
 
+    final int WIN_RATE_PERCENTAGE = 30, KDA_PERCENTEGE = 20, CSS_PERCENTEGE = 25, GOLD_PERCENTEGE = 15;
+    final double WIN_RATE_MAX = 60, KDA_MAX = 2.0, CSS_MAX = 270, GOLD_MAX = 16000;
+
     public int calculateWinRate(int wins, int losses){
         int total = wins + losses;
         return ( (wins*100)/total );
@@ -80,6 +83,39 @@ public class SummonerUtils {
         double result = (valueKill + valueAssist)/valueDeaths;
 
         return result+"";
+    }
+
+    public double getPerformance(ChampionRankedStat stat){
+        int totalGames = stat.getStats().getTotalSessionsPlayed();
+
+        int minions_total = stat.getStats().getTotalNeutralMinionsKilled() + stat.getStats().getTotalMinionKills();
+        int minions_game = minions_total/totalGames;
+
+        int win_rate = this.calculateWinRate(stat.getStats().getTotalSessionsWon(), stat.getStats().getTotalSessionsLost());
+
+        double valueKill = stat.getStats().getTotalChampionKills();
+        double valueAssist = stat.getStats().getTotalAssists()*.3;
+        double valueDeaths = stat.getStats().getTotalDeathsPerSession();
+        double kda = (valueKill + valueAssist)/valueDeaths;
+
+        int gold_total = stat.getStats().getTotalGoldEarned();
+        int gold_game = gold_total/totalGames;
+
+        double win_rate_value = (win_rate * WIN_RATE_PERCENTAGE) / WIN_RATE_MAX;
+        win_rate_value = win_rate_value > WIN_RATE_PERCENTAGE? WIN_RATE_PERCENTAGE : win_rate_value;
+
+        double kda_value = (kda * KDA_PERCENTEGE)/KDA_MAX;
+        kda_value = kda_value > KDA_PERCENTEGE? KDA_PERCENTEGE : kda_value;
+
+        double gold_value = (gold_game * GOLD_PERCENTEGE) / GOLD_MAX;
+        gold_value = gold_value >  GOLD_PERCENTEGE ? GOLD_PERCENTEGE : gold_value;
+
+        double minions_value =  (minions_game * CSS_PERCENTEGE) / CSS_MAX;
+        minions_value = minions_value > CSS_PERCENTEGE ? CSS_PERCENTEGE : minions_value;
+
+        double performance = win_rate_value + kda_value + gold_value + minions_value;
+
+        return performance;
     }
 
 }

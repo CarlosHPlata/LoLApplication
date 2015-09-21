@@ -6,7 +6,6 @@ import com.kingskull.lolapplication.models.pojos.ranked.RankedStat;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import retrofit.Callback;
 import retrofit.http.GET;
