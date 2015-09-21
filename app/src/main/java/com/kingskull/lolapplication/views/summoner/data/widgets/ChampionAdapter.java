@@ -27,12 +27,17 @@ public class ChampionAdapter extends RecyclerView.Adapter<ChampionAdapter.MyView
     private List<ChampionRankedStat> champions = new ArrayList<ChampionRankedStat>();
     private Context context;
 
+    private ItemClickListener mItemClickListener;
 
     public ChampionAdapter(Context context, List<ChampionRankedStat> champions){
         this.context = context;
         this.inflater = LayoutInflater.from(context);
         this.champions = champions;
         utils = new SummonerUtils();
+    }
+
+    public void setOnItemClickListener(ItemClickListener listener){
+        this.mItemClickListener = listener;
     }
 
     @Override
@@ -71,13 +76,20 @@ public class ChampionAdapter extends RecyclerView.Adapter<ChampionAdapter.MyView
             championKills = (TextView) itemView.findViewById(R.id.kills_champion);
             championDeaths = (TextView) itemView.findViewById(R.id.deaths_single_champion);
             championAssists = (TextView) itemView.findViewById(R.id.assist_champion);
+            itemView.setClickable(true);
+            itemView.setOnClickListener(this);
         }
 
 
         @Override
         public void onClick(View v) {
-
+            if (mItemClickListener != null)
+                mItemClickListener.onItemClick(v, getAdapterPosition());
         }
 
+    }
+
+    public interface ItemClickListener {
+        public void onItemClick(View v, int position);
     }
 }
