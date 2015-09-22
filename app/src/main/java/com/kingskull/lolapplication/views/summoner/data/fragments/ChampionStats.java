@@ -186,7 +186,7 @@ public class ChampionStats extends Fragment {
         deathsChamp.setText(utils.getDeaths(stat));
         assistChamp.setText(utils.getAssists(stat));
 
-        kda.setText(String.format("%.2f", utils.KDARatio(stat)) );
+        kda.setText("KDA: "+String.format("%.2f", utils.KDARatio(stat)) );
 
         dismissButton.setOnClickListener(new View.OnClickListener() {
             @Override
