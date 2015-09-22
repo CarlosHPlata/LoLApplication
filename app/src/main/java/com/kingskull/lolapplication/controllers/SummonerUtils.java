@@ -1,7 +1,11 @@
 package com.kingskull.lolapplication.controllers;
 
+import com.kingskull.lolapplication.models.pojos.Champion.Champion;
 import com.kingskull.lolapplication.models.pojos.league.Entry;
 import com.kingskull.lolapplication.models.pojos.ranked.ChampionRankedStat;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Usuario on 07/09/2015.
@@ -116,6 +120,35 @@ public class SummonerUtils {
         double performance = win_rate_value + kda_value + gold_value + minions_value;
 
         return performance;
+    }
+
+    public List<ChampionRankedStat> orderByPerformance(List<ChampionRankedStat> champsNotSorted){
+        List<ChampionRankedStat> champsSorted = new ArrayList<ChampionRankedStat>();
+
+        int idChampMostPerformance=0;
+        double performanceMax = -1;
+        double tempPerformance;
+
+        while (champsNotSorted.size() > 0){
+
+            for (int i=0; i < champsNotSorted.size(); i++){
+
+                tempPerformance = getPerformance( champsNotSorted.get(i) );
+
+                if ( tempPerformance > performanceMax ){
+                    performanceMax = tempPerformance;
+                    idChampMostPerformance = i;
+                }
+            }
+
+            champsSorted.add( champsNotSorted.get(idChampMostPerformance) );
+            champsNotSorted.remove(idChampMostPerformance);
+
+            idChampMostPerformance=0;
+            performanceMax = -1;
+        }
+
+        return champsSorted;
     }
 
 }

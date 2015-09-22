@@ -83,7 +83,9 @@ public class SummonerApiUtils {
             long id = this.id;
 
             Summoner summoner = getSummonerInCache();
-            if ( summoner != null && summoner.getId() == id){
+            if ( summoner != null && summoner.getId() == id && summoner.getLeagueStat() != null
+                    && summoner.getLeagueStat().getEntries().size() > 0
+                    && summoner.getRankedStat() != null && summoner.getRankedStat().getChampions().size() > 0){
 
                 if ( summoner.getLastUpdate() - (new Date()).getTime() <= this.SIXTEN_MINUTE_IN_MILLIS){
                     bus.post(summoner);
@@ -96,7 +98,9 @@ public class SummonerApiUtils {
             } else {
                 summoner = getSummonerOnDisk(id);
 
-                if ( summoner != null ){
+                if ( summoner != null && summoner.getLeagueStat() != null
+                        && summoner.getLeagueStat().getEntries().size() > 0
+                        && summoner.getRankedStat() != null && summoner.getRankedStat().getChampions().size() > 0){
                     long difference = (new Date()).getTime() - summoner.getLastUpdate();
                     if ( difference <= this.SIXTEN_MINUTE_IN_MILLIS){
                         SummonerCache.setSummonerCache(summoner);

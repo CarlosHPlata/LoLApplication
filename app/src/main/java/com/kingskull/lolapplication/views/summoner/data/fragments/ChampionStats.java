@@ -1,16 +1,25 @@
 package com.kingskull.lolapplication.views.summoner.data.fragments;
 
+import android.app.ActionBar;
 import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import com.kingskull.lolapplication.R;
 import com.kingskull.lolapplication.api.restfull.Utils.SummonerCache;
+import com.kingskull.lolapplication.controllers.SummonerUtils;
 import com.kingskull.lolapplication.models.pojos.Summoner;
 import com.kingskull.lolapplication.models.pojos.ranked.ChampionRankedStat;
 import com.kingskull.lolapplication.views.summoner.data.widgets.ChampionAdapter;
@@ -45,7 +54,9 @@ public class ChampionStats extends Fragment {
             result.add( champions.get(i) );
         }
 
-        return result;
+        SummonerUtils utils = new SummonerUtils();
+
+        return utils.orderByPerformance(result);
     }
 
     @Override
@@ -68,13 +79,27 @@ public class ChampionStats extends Fragment {
             @Override
             public void onItemClick(View v, int position) {
 
-                Dialog dialog = new Dialog(getActivity());
-
                 View view = getActivity().getLayoutInflater().inflate(R.layout.single_champion_card, null);
 
+                final Dialog dialog = new Dialog(getActivity());
+                dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+                dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                // layout to display
                 dialog.setContentView(view);
-                dialog.show();
 
+                // set color transpartent
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                TextView dismissButton = (TextView) view.findViewById(R.id.dismiss);
+
+                dismissButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
             }
         });
 
