@@ -18,11 +18,16 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.kingskull.lolapplication.R;
+import com.kingskull.lolapplication.api.observer.BusProvider;
+import com.kingskull.lolapplication.api.restfull.Utils.ChampionApiUtils;
 import com.kingskull.lolapplication.api.restfull.Utils.SummonerCache;
 import com.kingskull.lolapplication.controllers.SummonerUtils;
+import com.kingskull.lolapplication.models.pojos.Champion.Champion;
 import com.kingskull.lolapplication.models.pojos.Summoner;
 import com.kingskull.lolapplication.models.pojos.ranked.ChampionRankedStat;
 import com.kingskull.lolapplication.views.summoner.data.widgets.ChampionAdapter;
+import com.squareup.otto.Bus;
+import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +38,8 @@ public class ChampionStats extends Fragment {
 
     private ChampionAdapter adapter;
     private RecyclerView drawerList;
+
+    private List<ChampionRankedStat> championsStats;
 
     public static ChampionStats newInstance() {
         ChampionStats fragment = new ChampionStats();
@@ -55,8 +62,9 @@ public class ChampionStats extends Fragment {
         }
 
         SummonerUtils utils = new SummonerUtils();
+        this.championsStats = utils.orderByPerformance(result);
 
-        return utils.orderByPerformance(result);
+        return this.championsStats;
     }
 
     @Override
@@ -70,6 +78,9 @@ public class ChampionStats extends Fragment {
         this.fragment = inflater.inflate(R.layout.fragment_champion_stats, container, false);
         this.drawerList = (RecyclerView) fragment.findViewById(R.id.drawerList);
 
+        Bus bus = BusProvider.getInstance();
+        bus.register(this);
+
         this.adapter = new ChampionAdapter(getActivity(), getData());
 
         drawerList.setAdapter(adapter);
@@ -78,32 +89,37 @@ public class ChampionStats extends Fragment {
         adapter.setOnItemClickListener(new ChampionAdapter.ItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-
-                View view = getActivity().getLayoutInflater().inflate(R.layout.single_champion_card, null);
-
-                final Dialog dialog = new Dialog(getActivity());
-                dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-                dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-                // layout to display
-                dialog.setContentView(view);
-
-                // set color transpartent
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                TextView dismissButton = (TextView) view.findViewById(R.id.dismiss);
-
-                dismissButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialog.dismiss();
-                    }
-                });
-
-                dialog.show();
+                ChampionApiUtils apiUtils = new ChampionApiUtils();
+                apiUtils.getChampionInfo( championsStats.get(position).getId() );
             }
         });
 
         return fragment;
+    }
+
+    @Subscribe
+    public void getChampionResult(Champion champion){
+        View view = getActivity().getLayoutInflater().inflate(R.layout.single_champion_card, null);
+
+        final Dialog dialog = new Dialog(getActivity());
+        dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        // layout to display
+        dialog.setContentView(view);
+
+        // set color transpartent
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        TextView dismissButton = (TextView) view.findViewById(R.id.dismiss);
+
+        dismissButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 
 
