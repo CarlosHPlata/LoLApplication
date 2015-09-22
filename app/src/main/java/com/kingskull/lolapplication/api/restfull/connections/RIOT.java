@@ -7,6 +7,7 @@ public final class RIOT {
 
     public static final String END_POINT = "https://lan.api.pvp.net";
     public static final String PROFILE_ICONS_URL = "http://ddragon.leagueoflegends.com/cdn/5.17.1/img/profileicon/";
+    public static final String SPLASH_ARTS_URL = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/";
 
 
 

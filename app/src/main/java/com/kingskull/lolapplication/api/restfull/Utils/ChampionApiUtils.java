@@ -48,6 +48,7 @@ public class ChampionApiUtils {
     @Subscribe
     public void getChampionFromAPi(ChampionResponse championResponse){
         Champion champion = championResponse.getChampion();
+        StaticInfo.getInstance().getChampions().put(champion.getId(), champion);
         BusProvider.post( champion );
     }
 

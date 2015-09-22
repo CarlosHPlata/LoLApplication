@@ -78,7 +78,7 @@ public class SummonerUtils {
         return result+"\nA";
     }
 
-    public String KDARatio(ChampionRankedStat stat){
+    public double KDARatio(ChampionRankedStat stat){
 
         double valueKill = stat.getStats().getTotalChampionKills();
         double valueAssist = stat.getStats().getTotalAssists()*.3;
@@ -86,7 +86,7 @@ public class SummonerUtils {
 
         double result = (valueKill + valueAssist)/valueDeaths;
 
-        return result+"";
+        return result;
     }
 
     public double getPerformance(ChampionRankedStat stat){

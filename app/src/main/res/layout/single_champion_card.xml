@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/card_view"
             android:orientation="vertical"
+            android:id="@+id/content_champ"
             android:background="@color/grey_dark_background">
 
             <RelativeLayout
@@ -273,6 +274,24 @@
                 </ScrollView>
 
             </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/champProgressBar"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:background="@color/grey_dark_background">
+
+            <ProgressBar
+                android:id="@+id/Progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </ProgressBar>
+
+
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
