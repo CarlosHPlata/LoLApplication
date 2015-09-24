@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by cherrera on 9/24/2015.
  */
-public class MatchList {
+public class MatchList implements java.io.Serializable{
     private int endIndex;
     private List<MatchReference> matches;
     private int startIndex;
