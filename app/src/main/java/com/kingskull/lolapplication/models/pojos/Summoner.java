@@ -1,6 +1,7 @@
 package com.kingskull.lolapplication.models.pojos;
 
 import com.kingskull.lolapplication.models.pojos.league.LeagueStat;
+import com.kingskull.lolapplication.models.pojos.match.MatchList;
 import com.kingskull.lolapplication.models.pojos.ranked.RankedStat;
 
 /**
@@ -17,6 +18,15 @@ public class Summoner implements java.io.Serializable{
 
     private RankedStat rankedStat;
     private LeagueStat leagueStat;
+    private MatchList matchList;
+
+    public MatchList getMatchList() {
+        return matchList;
+    }
+
+    public void setMatchList(MatchList matchList) {
+        this.matchList = matchList;
+    }
 
     public long getId() {
         return id;

@@ -3,7 +3,7 @@ package com.kingskull.lolapplication.models.pojos.match;
 /**
  * Created by cherrera on 9/24/2015.
  */
-public class MatchReference {
+public class MatchReference implements java.io.Serializable{
 
     private long champion;
     private String lane;
