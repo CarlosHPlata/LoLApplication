@@ -17,7 +17,7 @@ import java.util.List;
  * @version 2.00, 18/09/2015
  *
  */
-public class DBManaer {
+public class DBManaer<T extends Entitie> {
 
     private DBHelper helper;
     private SQLiteDatabase db;
@@ -30,7 +30,7 @@ public class DBManaer {
     }
 
 
-    public long insert (Entitie entitie){
+    public long insert (T entitie){
         long id = NO_INSERTED_ENTITIE;
 
         getWritableDb();
@@ -44,13 +44,13 @@ public class DBManaer {
     }
 
 
-    public List multipleInsert (ArrayList<Entitie> entities){
+    public List multipleInsert (ArrayList<T> entities){
         ArrayList ids = new ArrayList();
         long tempId;
 
         getWritableDb();
 
-        for (Entitie entitie : entities){
+        for (T entitie : entities){
             tempId = this.insert(entitie);
             ids.add(tempId);
         }
@@ -58,13 +58,13 @@ public class DBManaer {
         return ids;
     }
 
-    public void update (Entitie entitie){
+    public void update (T entitie){
         getWritableDb();
 
         db.update(entitie.getTableName(), entitie.getContentValues(), "id = ?", new String[]{String.valueOf(entitie.getId())});
     }
 
-    public Entitie getById (Entitie dummyEntitie) {
+    public T getById (T dummyEntitie) {
         getReadableDb();
 
         Cursor cursor = db.query(dummyEntitie.getTableName(), dummyEntitie.getColumnNames(), "id = ?", new String[]{ String.valueOf(dummyEntitie.getId())}, null, null, null, null);
@@ -78,8 +78,8 @@ public class DBManaer {
     }
 
 
-    public List<Entitie> getAll(Entitie dumEntitiie){
-        List<Entitie> entities = new ArrayList<Entitie>();
+    public List<T> getAll(T dumEntitiie){
+        List<T> entities = new ArrayList<T>();
 
         String selectQuery = "SELECT * FROM " + dumEntitiie.getTableName();
 
@@ -91,7 +91,7 @@ public class DBManaer {
         if (cursor.moveToFirst()){
             do {
 
-                dumEntitiie = dumEntitiie.getNewInstance();
+                dumEntitiie = (T) dumEntitiie.getNewInstance();
                 dumEntitiie.setContentValues(cursor);
                 entities.add(dumEntitiie);
 

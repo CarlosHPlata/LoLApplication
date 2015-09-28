@@ -11,6 +11,8 @@ import java.util.Map;
  */
 public class StaticInfo {
 
+    public static final String PREFERENCES_NAME = "synergylolkingskull";
+
     private String apiKey;
     private SummonerEntitie summonerEntitie;
     private Map<Integer, Champion> champions = new HashMap<Integer, Champion>();

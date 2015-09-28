@@ -24,6 +24,10 @@
             android:name=".views.loading.screen.activities.LoadingScreen"
             android:label="@string/title_activity_loading_screen" >
         </activity>
+        <activity
+            android:name=".views.syncronize.summoner.activities.SummonerList"
+            android:label="@string/title_activity_summoner_list" >
+        </activity>
     </application>
 
 </manifest>
