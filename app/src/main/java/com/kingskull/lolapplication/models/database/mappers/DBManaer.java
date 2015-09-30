@@ -95,7 +95,7 @@ public class DBManaer<T extends Entitie> {
                 dumEntitiie.setContentValues(cursor);
                 entities.add(dumEntitiie);
 
-            } while ( cursor.moveToFirst() );
+            } while ( cursor.moveToNext() );
         }
 
         return entities;
