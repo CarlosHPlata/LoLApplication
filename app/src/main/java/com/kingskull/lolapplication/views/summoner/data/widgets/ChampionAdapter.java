@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.kingskull.lolapplication.R;
 import com.kingskull.lolapplication.api.restfull.connections.SILVERCODING;
-import com.kingskull.lolapplication.controllers.SummonerUtils;
+import com.kingskull.lolapplication.controllers.utils.SummonerUtils;
 import com.kingskull.lolapplication.models.pojos.ranked.ChampionRankedStat;
 import com.koushikdutta.ion.Ion;
 

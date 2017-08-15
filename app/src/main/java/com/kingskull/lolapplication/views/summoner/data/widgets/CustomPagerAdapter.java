@@ -11,6 +11,7 @@ import android.text.style.ImageSpan;
 
 import com.kingskull.lolapplication.R;
 import com.kingskull.lolapplication.views.summoner.data.fragments.ChampionStats;
+import com.kingskull.lolapplication.views.summoner.data.fragments.MatchHistory;
 import com.kingskull.lolapplication.views.summoner.data.fragments.SummonerInfo;
 
 public class CustomPagerAdapter extends FragmentPagerAdapter {
@@ -29,10 +30,17 @@ public class CustomPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         Fragment result = null;
 
-        if (position == 2){
-            result = ChampionStats.newInstance();
-        } else{
-            result = SummonerInfo.newInstance();
+        switch (position){
+            case 0:
+                result = MatchHistory.newInstance();
+                break;
+            case 1:
+                result = SummonerInfo.newInstance();
+                break;
+            case 2:
+            default:
+                result = ChampionStats.newInstance();
+                break;
         }
 
         return result;

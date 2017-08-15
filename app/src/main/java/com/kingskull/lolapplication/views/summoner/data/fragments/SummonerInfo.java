@@ -12,12 +12,15 @@ import com.kingskull.lolapplication.R;
 import com.kingskull.lolapplication.api.observer.BusProvider;
 import com.kingskull.lolapplication.api.restfull.Utils.SummonerCache;
 import com.kingskull.lolapplication.api.restfull.connections.RIOT;
-import com.kingskull.lolapplication.controllers.SummonerUtils;
+import com.kingskull.lolapplication.controllers.utils.DragonVersionsHandler;
+import com.kingskull.lolapplication.controllers.utils.SummonerUtils;
 import com.kingskull.lolapplication.models.pojos.Summoner;
 import com.kingskull.lolapplication.models.pojos.league.Entry;
 import com.kingskull.lolapplication.models.pojos.ranked.ChampionRankedStat;
 import com.kingskull.lolapplication.views.widgets.CircularProgressBar;
 import com.koushikdutta.ion.Ion;
+
+import java.text.DecimalFormat;
 
 public class SummonerInfo extends Fragment {
     private static final String ARG_PARAM1 = "param1";
@@ -47,8 +50,6 @@ public class SummonerInfo extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        BusProvider.register(this);
-
         //if (getArguments() != null) {
          //   mParam1 = getArguments().getString(ARG_PARAM1);
            // mParam2 = getArguments().getString(ARG_PARAM2);
@@ -72,14 +73,29 @@ public class SummonerInfo extends Fragment {
     private void fillVars(){
 
         SummonerUtils utils = new SummonerUtils();
-        ChampionRankedStat stat = summoner.getRankedStat().getChampions().get( summoner.getRankedStat().getChampions().size()-1 );
+        ChampionRankedStat stat;
+        if (summoner.getRankedStat().getChampions().size() >= 1) {
+            stat = summoner.getRankedStat().getChampions().get(summoner.getRankedStat().getChampions().size() - 1);
+            for (ChampionRankedStat temp : summoner.getRankedStat().getChampions()) {
+                if (temp.getId() == 0)
+                    stat = temp;
+            }
+        }
+        else
+            stat = new ChampionRankedStat();
+
 
         //filling WLP rate
         ImageView icon = (ImageView) fragment.findViewById(R.id.icon);
         Ion.with(icon).placeholder(getResources().getDrawable(R.drawable.icon)).error(getResources().getDrawable(R.drawable.icon))
-                .load(RIOT.PROFILE_ICONS_URL + summoner.getProfileIconId() + ".png");
+                .load(new DragonVersionsHandler().urlBuilder(RIOT.PROFILE_ICONS_URL) + summoner.getProfileIconId() + ".png");
 
-        Entry entry = summoner.getLeagueStat().getEntries().get(0);
+
+        Entry entry;
+        if (summoner.getLeagueStat().getEntries().size() >= 1)
+            entry= summoner.getLeagueStat().getEntries().get(0);
+        else
+            entry = new Entry();
 
         String wins = entry.getWins() > 999? (entry.getWins()/1000)+"K" : entry.getWins()+"";
         String losses = entry.getLosses() > 999? (entry.getLosses()/1000)+"K" : entry.getLosses()+"";
@@ -144,11 +160,13 @@ public class SummonerInfo extends Fragment {
         ((TextView) fragment.findViewById(R.id.leaguepoints) ).setText( entry.getLeaguePoints() + " league points" );
 
 
-        //filling kda
+        //filling kdaa
+        double kdaRatio = utils.KDARatio(stat);
+        DecimalFormat df = new DecimalFormat("#.#");
         ((TextView) fragment.findViewById(R.id.kills_summoner)).setText( utils.getKills(stat) );
         ((TextView) fragment.findViewById(R.id.deaths_single_champion)).setText( utils.getDeaths(stat) );
         ((TextView) fragment.findViewById(R.id.assist_summoner)).setText( utils.getAssists(stat) );
-        ((TextView) fragment.findViewById(R.id.kda_perc)).setText( "KDA:" + utils.KDARatio(stat) );
+        ((TextView) fragment.findViewById(R.id.kda_perc)).setText( "KDA:" + df.format(kdaRatio) );
     }
 
 }

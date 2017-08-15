@@ -24,6 +24,7 @@ public class SummonerAdapter extends RecyclerView.Adapter<SummonerAdapter.Summon
     private List<SummonerEntitie> summoners = new ArrayList<SummonerEntitie>();
 
     private ItemCLickListener mItemClickListener;
+    private ItemLongClickListener mItemLongClickListener;
 
     public SummonerAdapter(Context context, List<SummonerEntitie> summoners){
         this.summoners = summoners;
@@ -32,8 +33,17 @@ public class SummonerAdapter extends RecyclerView.Adapter<SummonerAdapter.Summon
         this.summoners = summoners;
     }
 
+    public void deleteItem(int position){
+        summoners.remove(position);
+        notifyItemRemoved(position);
+    }
+
     public void setOnItemCLickListener(ItemCLickListener listener){
         this.mItemClickListener = listener;
+    }
+
+    public void setOnItemLongClickListener (ItemLongClickListener listener){
+        this.mItemLongClickListener = listener;
     }
 
     @Override
@@ -55,7 +65,16 @@ public class SummonerAdapter extends RecyclerView.Adapter<SummonerAdapter.Summon
         return this.summoners.size();
     }
 
-    class SummonerHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public List<SummonerEntitie> getSummoners() {
+        return summoners;
+    }
+
+    public void setSummoners(List<SummonerEntitie> summoners) {
+        this.summoners = summoners;
+    }
+
+    class SummonerHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener
+    {
 
         TextView summonerName;
         TextView region;
@@ -74,10 +93,22 @@ public class SummonerAdapter extends RecyclerView.Adapter<SummonerAdapter.Summon
                 mItemClickListener.onItemClick(view, summoners.get( getAdapterPosition() ));
             }
         }
+
+        @Override
+        public boolean onLongClick(View view) {
+            if ( mItemLongClickListener != null ){
+                mItemLongClickListener.onLongItemClick(view, summoners.get( getAdapterPosition() ));
+            }
+            return true;
+        }
     }
 
     public interface ItemCLickListener {
         void onItemClick(View v, SummonerEntitie summoner);
+    }
+
+    public interface ItemLongClickListener {
+        void onLongItemClick(View v, SummonerEntitie summoner);
     }
 
 }

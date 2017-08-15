@@ -25,7 +25,7 @@ public class SummonerController {
     }
 
     public void getChampionInfo(final int id){
-        ChampionApiUtils championApiUtils = new ChampionApiUtils();
+        ChampionApiUtils championApiUtils = new ChampionApiUtils(context);
     }
 
 

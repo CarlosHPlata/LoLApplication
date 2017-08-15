@@ -2,81 +2,148 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Carlos\AndroidStudioProjects\LoLApplication\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\jars\classes.jar"
+        is-multidex="false"
+        jar="C:\Users\Legion\.android\build-cache\3460abee3dd525f4d7032cbe97d1a553e34f0871\output\jars\classes.jar"
         jumboMode="false"
-        revision="21.1.1"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="C:\Users\Carlos\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\classes-cf665e597abe71ccbd30dee10bb7af899b82819e.jar" />
+        optimize="true"
+        revision="25.0.0"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="C:\Users\Legion\backup\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\classes_4ee185f4edf1305e950d1b4e8d92b782739626ee.jar" />
     </item>
     <item
-        jar="C:\Users\Carlos\.gradle\caches\modules-2\files-2.1\com.koushikdutta.ion\ion\2.1.6\cd55ef3ba6d8b62838b658ba2507b019dffb3a08\ion-2.1.6.jar"
+        is-multidex="false"
+        jar="C:\Users\Legion\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3.1\ecb6e1f8e4b0e84c4b886c2f14a1500caf309757\gson-2.3.1.jar"
         jumboMode="false"
-        revision="21.1.1"
-        sha1="cd55ef3ba6d8b62838b658ba2507b019dffb3a08">
-        <dex dex="C:\Users\Carlos\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\ion-2.1.6-c4267c0d7d8121f0c01ff886e30aa61d5b98e984.jar" />
-    </item>
-    <item
-        jar="C:\Users\Carlos\AndroidStudioProjects\LoLApplication\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
-        <dex dex="C:\Users\Carlos\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\classes-10231e024ecbdb4b2ea01af52a681e733c2d75f4.jar" />
-    </item>
-    <item
-        jar="C:\Users\Carlos\.gradle\caches\modules-2\files-2.1\com.koushikdutta.async\androidasync\2.1.6\e3d5f6ab2003e31f2cf5ea61b4731a21e9517935\androidasync-2.1.6.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="e3d5f6ab2003e31f2cf5ea61b4731a21e9517935">
-        <dex dex="C:\Users\Carlos\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\androidasync-2.1.6-63ead2b96b92dbdc2472785ae4f51ef0bc780c01.jar" />
-    </item>
-    <item
-        jar="C:\Users\Carlos\AndroidStudioProjects\LoLApplication\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\21.0.3\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="00b0b7233e1ec64acebfac40d4983d32d4712426">
-        <dex dex="C:\Users\Carlos\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\classes-ed2efc11a311c154fea88f85e016dd958ce3b43c.jar" />
-    </item>
-    <item
-        jar="C:\Users\Carlos\.gradle\caches\modules-2\files-2.1\com.squareup\otto\1.3.6\ee373b6d0d6ea36a0a9b0cbabaf16be7e7fc3e30\otto-1.3.6.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="ee373b6d0d6ea36a0a9b0cbabaf16be7e7fc3e30">
-        <dex dex="C:\Users\Carlos\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\otto-1.3.6-3c375dd7694f51542d04cd592051645a2ebb3339.jar" />
-    </item>
-    <item
-        jar="C:\Users\Carlos\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3.1\ecb6e1f8e4b0e84c4b886c2f14a1500caf309757\gson-2.3.1.jar"
-        jumboMode="false"
-        revision="21.1.1"
+        optimize="true"
+        revision="25.0.0"
         sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
-        <dex dex="C:\Users\Carlos\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\gson-2.3.1-d0543e547585fc082c90ccbaa09802f86e3b4deb.jar" />
+        <dex dex="C:\Users\Legion\backup\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\gson-2.3.1_ee0394f51a7fd950dfba3d896e29aa8ea716be19.jar" />
     </item>
     <item
-        jar="C:\Users\Carlos\AndroidStudioProjects\LoLApplication\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\libs\internal_impl-23.0.1.jar"
+        is-multidex="false"
+        jar="C:\Users\Legion\.android\build-cache\d1567210f60cb17691d9fa0a5cfcf80d5a684c75\output\jars\classes.jar"
         jumboMode="false"
-        revision="21.1.1"
-        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
-        <dex dex="C:\Users\Carlos\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.1-026cf42897334b7078ce920e63fe050cfafcd17d.jar" />
+        optimize="true"
+        revision="25.0.0"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="C:\Users\Legion\backup\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\classes_a5f7ae88ab135af6cd9d03a3ef741a04ce65d676.jar" />
     </item>
     <item
-        jar="C:\Users\Carlos\AndroidStudioProjects\LoLApplication\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.0.1\jars\classes.jar"
+        is-multidex="false"
+        jar="C:\Users\Legion\.gradle\caches\modules-2\files-2.1\com.koushikdutta.ion\ion\2.1.6\cd55ef3ba6d8b62838b658ba2507b019dffb3a08\ion-2.1.6.jar"
         jumboMode="false"
-        revision="21.1.1"
-        sha1="4356e230a981d1bbf047d848b91bc0d9b7c5bacc">
-        <dex dex="C:\Users\Carlos\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\classes-5766425edc8ee9826af0d953032de1e49d77e601.jar" />
+        optimize="true"
+        revision="25.0.0"
+        sha1="cd55ef3ba6d8b62838b658ba2507b019dffb3a08">
+        <dex dex="C:\Users\Legion\backup\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\ion-2.1.6_73d364af006d9959bdf0945253d34a40192b77d4.jar" />
     </item>
     <item
-        jar="C:\Users\Carlos\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.1\support-annotations-23.0.1.jar"
+        is-multidex="false"
+        jar="C:\Users\Legion\.android\build-cache\04ea58a8c806a4201d4aa3d872f75975314e11e1\output\jars\classes.jar"
         jumboMode="false"
-        revision="21.1.1"
-        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
-        <dex dex="C:\Users\Carlos\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.1-1898839b83cbd972a5e05c4878348d802b3936be.jar" />
+        optimize="true"
+        revision="25.0.0"
+        sha1="fcd01fd11233459f546c437ec927e9b61bf7caf1">
+        <dex dex="C:\Users\Legion\backup\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\classes_5cc7c5dbf96e9f9a604fcb862c6d419f40ebac34.jar" />
     </item>
     <item
-        jar="C:\Users\Carlos\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\retrofit\1.9.0\a681c044244d9fc375198588297a39ba78028423\retrofit-1.9.0.jar"
+        is-multidex="false"
+        jar="C:\Users\Legion\.android\build-cache\f01c845198b11caef70b8f76e6eaf70d2aa48421\output\jars\classes.jar"
         jumboMode="false"
-        revision="21.1.1"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8df0e365e40beb151bc42dee20817721a6cab7b0">
+        <dex dex="C:\Users\Legion\backup\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\classes_cc0361e22d3b81654738e87cb94521dd1644000f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Legion\.android\build-cache\95a94fa1bb6f065f0151976ec4aa46c51b16c7bf\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c4f45092eee6cdf1a5dbd597b2b6819be652ce2e">
+        <dex dex="C:\Users\Legion\backup\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\classes_26c42778cb9199a0540a1d68286d03bbdf4edf15.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Legion\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\retrofit\1.9.0\a681c044244d9fc375198588297a39ba78028423\retrofit-1.9.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
         sha1="a681c044244d9fc375198588297a39ba78028423">
-        <dex dex="C:\Users\Carlos\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\retrofit-1.9.0-f85f780d9013e8706c8f9b9c2d8e6761b1597adb.jar" />
+        <dex dex="C:\Users\Legion\backup\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\retrofit-1.9.0_e56d88f1eefd2ee26b7db27b4a80d42ace8f8813.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Legion\.android\build-cache\3460abee3dd525f4d7032cbe97d1a553e34f0871\output\jars\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\Users\Legion\backup\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3_5f73a25674c006262c7b0de27024cccca4857215.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Legion\.android\build-cache\6ae75c321d8af76da1989ac8598aa37defd35b4e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="00b0b7233e1ec64acebfac40d4983d32d4712426">
+        <dex dex="C:\Users\Legion\backup\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\classes_6206a1c252a6daecd63f8e610387ac4d9cf944e4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Legion\.android\build-cache\62594b8892177fa6b1d51616961098c88b8d6652\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="88c6386ad8356b89487b43bcaae4827b1abe999c">
+        <dex dex="C:\Users\Legion\backup\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\classes_98f1dab94c2b5a5b6da0ecc8c0027df034e9140e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Legion\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\26.0.0-alpha1\support-annotations-26.0.0-alpha1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="023ee503b631f69511e335a061ea008f8da60f40">
+        <dex dex="C:\Users\Legion\backup\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\support-annotations-26.0.0-alpha1_22367ca37eaf32c89f695055f885b79379359ce0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Legion\.android\build-cache\bce82a46638bd704f0160518e94865781c38ebf5\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="814fc0c3ec69a944add398217d90077301501a74">
+        <dex dex="C:\Users\Legion\backup\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\classes_cf0def570c7e81d527590025abd2bd254f091bad.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Legion\.android\build-cache\303f3d63a4990bddf3fec6df857a39ff0fff99a2\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a419a27ebcb7743bc337a8d8202eda3e93a2140e">
+        <dex dex="C:\Users\Legion\backup\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\classes_0a6d86d8c14d2594b17c433fadc1ed86ae554951.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Legion\.gradle\caches\modules-2\files-2.1\com.koushikdutta.async\androidasync\2.1.6\e3d5f6ab2003e31f2cf5ea61b4731a21e9517935\androidasync-2.1.6.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e3d5f6ab2003e31f2cf5ea61b4731a21e9517935">
+        <dex dex="C:\Users\Legion\backup\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\androidasync-2.1.6_6bdea180094d5d1c0403d4dfe99cc7d6b996baca.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Legion\.gradle\caches\modules-2\files-2.1\com.squareup\otto\1.3.6\ee373b6d0d6ea36a0a9b0cbabaf16be7e7fc3e30\otto-1.3.6.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ee373b6d0d6ea36a0a9b0cbabaf16be7e7fc3e30">
+        <dex dex="C:\Users\Legion\backup\AndroidStudioProjects\LoLApplication\app\build\intermediates\pre-dexed\debug\otto-1.3.6_fe5b6f8ee4e23ac76956549f1a12988c91675a92.jar" />
     </item>
 
 </items>

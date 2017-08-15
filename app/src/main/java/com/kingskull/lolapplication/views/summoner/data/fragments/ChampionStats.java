@@ -1,6 +1,5 @@
 package com.kingskull.lolapplication.views.summoner.data.fragments;
 
-import android.app.ActionBar;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -8,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +14,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.kingskull.lolapplication.R;
@@ -24,8 +21,7 @@ import com.kingskull.lolapplication.api.observer.BusProvider;
 import com.kingskull.lolapplication.api.restfull.Utils.ChampionApiUtils;
 import com.kingskull.lolapplication.api.restfull.Utils.SummonerCache;
 import com.kingskull.lolapplication.api.restfull.connections.RIOT;
-import com.kingskull.lolapplication.api.restfull.connections.SILVERCODING;
-import com.kingskull.lolapplication.controllers.SummonerUtils;
+import com.kingskull.lolapplication.controllers.utils.SummonerUtils;
 import com.kingskull.lolapplication.models.pojos.Champion.Champion;
 import com.kingskull.lolapplication.models.pojos.Summoner;
 import com.kingskull.lolapplication.models.pojos.ranked.ChampionRankedStat;
@@ -69,8 +65,9 @@ public class ChampionStats extends Fragment {
         List<ChampionRankedStat> champions = summoner.getRankedStat().getChampions();
         List<ChampionRankedStat> result = new ArrayList<ChampionRankedStat>();
 
-        for(int i=0; i<champions.size()-2; i++){ //the last champions always be the all ranked stats, so we dont want it
-            result.add( champions.get(i) );
+        for(int i=0; i<champions.size()-1; i++){
+            if (champions.get(i).getId() != 0) //the id 0 belongs to the all ranked stats.
+                result.add( champions.get(i) );
         }
 
         SummonerUtils utils = new SummonerUtils();
@@ -90,20 +87,20 @@ public class ChampionStats extends Fragment {
         this.fragment = inflater.inflate(R.layout.fragment_champion_stats, container, false);
         this.drawerList = (RecyclerView) fragment.findViewById(R.id.drawerList);
 
-        Bus bus = BusProvider.getInstance();
-        if (!this.isRegistered){
-            this.isRegistered = true;
-            bus.register(this);
-        }
-
         this.adapter = new ChampionAdapter(getActivity(), getData());
 
         drawerList.setAdapter(adapter);
         drawerList.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        final ChampionStats thisActiviti = this;
+
         adapter.setOnItemClickListener(new ChampionAdapter.ItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
+                if (!isRegistered){
+                    isRegistered = true;
+                    BusProvider.register(thisActiviti);
+                }
 
                 view = getActivity().getLayoutInflater().inflate(R.layout.single_champion_card, null);
 
@@ -120,7 +117,7 @@ public class ChampionStats extends Fragment {
                 ((LinearLayout) view.findViewById(R.id.champProgressBar)).setVisibility(View.VISIBLE);
 
                 statTemp = championsStats.get(position);
-                ChampionApiUtils apiUtils = new ChampionApiUtils();
+                ChampionApiUtils apiUtils = new ChampionApiUtils(getActivity().getApplicationContext());
                 apiUtils.getChampionInfo( championsStats.get(position).getId() );
 
                 dialog.show();
@@ -133,9 +130,14 @@ public class ChampionStats extends Fragment {
     @Subscribe
     public void getChampionResult(Champion champion){
 
+        if (isRegistered){
+            isRegistered = false;
+            BusProvider.unRegister(this);
+        }
+
         ImageView champImage = (ImageView) view.findViewById(R.id.full_card_image);
 
-        String url = RIOT.SPLASH_ARTS_URL + champion.getKey() + "_0.jpg";
+        String url = RIOT.DRAGON_URL + RIOT.SPLASH_ARTS_URL + champion.getKey() + "_0.jpg";
 
         Ion.with(champImage).placeholder(getActivity().getResources().getDrawable(R.drawable.dummie_full))
                 .error(getActivity().getResources().getDrawable(R.drawable.dummie))
@@ -198,6 +200,8 @@ public class ChampionStats extends Fragment {
         ((LinearLayout) view.findViewById(R.id.content_champ)).setVisibility(View.VISIBLE);
         ((LinearLayout) view.findViewById(R.id.champProgressBar)).setVisibility(View.GONE);
     }
+
+
 
 
 }

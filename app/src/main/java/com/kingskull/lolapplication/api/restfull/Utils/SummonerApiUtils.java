@@ -7,6 +7,7 @@ import com.kingskull.lolapplication.api.observer.BusProvider;
 import com.kingskull.lolapplication.api.restfull.connections.Errors.RiotApiError;
 import com.kingskull.lolapplication.api.restfull.connections.responses.SummonerNameResponse;
 import com.kingskull.lolapplication.api.restfull.connections.responses.SummonerResponse;
+import com.kingskull.lolapplication.controllers.utils.SessionManager;
 import com.kingskull.lolapplication.models.pojos.Summoner;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
@@ -19,13 +20,10 @@ import java.util.Date;
  */
 public class SummonerApiUtils {
 
-    private Bus bus;
     private Context context;
 
     public SummonerApiUtils(Context context){
-        this.bus = BusProvider.getInstance();
         this.context = context;
-        bus.register(this);
     }
 
     public void getSummonerById(long id){
@@ -40,8 +38,13 @@ public class SummonerApiUtils {
 
     private Summoner getSummonerOnDisk(long id){
         try {
-            Summoner summoner = (new SummonerStream(context)).load(id);
-            return summoner;
+            Summoner summoner = (new SummonerStream(context)).load();
+
+            if (summoner != null && summoner.getId() == id)
+                return summoner;
+            else
+                return null;
+
         } catch (IOException e) {
             return null;
         } catch (ClassNotFoundException e) {
@@ -50,15 +53,17 @@ public class SummonerApiUtils {
     }
 
     private void getSummonerWithAPI(long id){
-        SummonerApiCall api =  new SummonerApiCall();
-        api.getSummonerById(id);
+        String region = SessionManager.getSession(context).getRegion();
+        SummonerApiCall api =  new SummonerApiCall(region);
+        BusProvider.register(this);
+        api.getSummonerById(id, region);
     }
 
     @Subscribe
     public void onApiResponse(SummonerResponse response) {
         Summoner summoner = response.getSummoner();
-
-        bus.post(summoner);
+        BusProvider.unRegister(this);
+        BusProvider.post(summoner);
 
         try {
             ( new SummonerStream(context) ).save(summoner);
@@ -88,7 +93,7 @@ public class SummonerApiUtils {
                     && summoner.getRankedStat() != null && summoner.getRankedStat().getChampions().size() > 0){
 
                 if ( summoner.getLastUpdate() - (new Date()).getTime() <= this.SIXTEN_MINUTE_IN_MILLIS){
-                    bus.post(summoner);
+                    BusProvider.post(summoner);
                 } else {
 
                     getSummonerWithAPI(id);
@@ -104,7 +109,7 @@ public class SummonerApiUtils {
                     long difference = (new Date()).getTime() - summoner.getLastUpdate();
                     if ( difference <= this.SIXTEN_MINUTE_IN_MILLIS){
                         SummonerCache.setSummonerCache(summoner);
-                        bus.post(summoner);
+                        BusProvider.post(summoner);
                     } else {
                         getSummonerWithAPI(id);
                     }

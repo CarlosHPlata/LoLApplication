@@ -47,4 +47,21 @@ public class SummonerListController {
         }
     }
 
+    public SummonerEntitie getSummonerEntitieByName(String summonerName, String region){
+        SummonerEntitie result = new SummonerEntitie();
+        result.setSummonername(summonerName);
+        result.setRegion(region.toLowerCase());
+
+        DBManaer<SummonerEntitie> summonerMapper = new DBManaer<SummonerEntitie>(context);
+
+        result = summonerMapper.getBySummonerName(result);
+
+        return result;
+    }
+
+    public void deleteSummoner(SummonerEntitie entitie){
+        DBManaer<SummonerEntitie> dbManaer = new DBManaer<>(context);
+        dbManaer.delete(entitie);
+    }
+
 }

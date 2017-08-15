@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.squareup.otto.Bus;
+import com.squareup.otto.ThreadEnforcer;
 
 
 /**
@@ -11,6 +12,10 @@ import com.squareup.otto.Bus;
  */
 public class MainBus extends Bus {
     private final Handler mHandler = new Handler(Looper.getMainLooper());
+
+    public MainBus(ThreadEnforcer enforcer) {
+        super(enforcer, DEFAULT_IDENTIFIER);
+    }
 
     @Override
     public void post(final Object event) {

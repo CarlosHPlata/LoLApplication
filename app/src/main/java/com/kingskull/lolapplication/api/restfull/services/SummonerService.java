@@ -1,7 +1,9 @@
 package com.kingskull.lolapplication.api.restfull.services;
 
+import com.kingskull.lolapplication.models.pojos.Runes.RunePages;
 import com.kingskull.lolapplication.models.pojos.Summoner;
 import com.kingskull.lolapplication.models.pojos.league.LeagueStat;
+import com.kingskull.lolapplication.models.pojos.match.MatchList;
 import com.kingskull.lolapplication.models.pojos.ranked.RankedStat;
 
 import java.util.ArrayList;
@@ -42,12 +44,32 @@ public interface SummonerService {
             Callback<RankedStat> callback
     );
 
+    @GET("/api/lol/{region}/v2.2/matchlist/by-summoner/{summonerId}")
+    void getMatchHistory(
+            @Path("summonerId") long summonerId,
+            @Path("region") String region,
+            @Query("rankedQueues") String rankedQueues,
+            @Query("seasons") String seasons,
+            @Query("beginIndex") int beginIndex,
+            @Query("endIndex") int endIndex,
+            @Query("api_key") String apiKey,
+            Callback<MatchList> callback
+    );
+
     @GET("/api/lol/{region}/v2.5/league/by-summoner/{summonerIds}/entry")
     void getLeagueStats(
             @Path("summonerIds") String summonerIds,
             @Path("region") String region,
             @Query("api_key") String apiKey,
             Callback< HashMap<String, ArrayList<LeagueStat>> > callback
+    );
+
+    @GET("/api/lol/{region}/v1.4/summoner/{summonerIds}/runes")
+    void getRunes(
+            @Path("summonerIds") String summonerIds,
+            @Path("region") String region,
+            @Query("api_key") String apiKey,
+            Callback< HashMap<String, RunePages> > callback
     );
 
 }

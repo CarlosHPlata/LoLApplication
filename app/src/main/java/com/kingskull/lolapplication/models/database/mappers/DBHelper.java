@@ -25,7 +25,7 @@ public class DBHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS summoners (id INTEGER PRIMARY KEY, summonername TEXT, region TEXT)");
-        db.execSQL("INSERT INTO summoners(id, summonername, region) VALUES (2033911, 'kingskull619', 'lan')");
+        //db.execSQL("INSERT INTO summoners(id, summonername, region) VALUES (2033911, 'I Legion', 'lan')");
     }
 
     @Override

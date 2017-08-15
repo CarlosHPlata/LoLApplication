@@ -1,10 +1,12 @@
 package com.kingskull.lolapplication.models.database.mappers;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.kingskull.lolapplication.models.database.entities.Entitie;
+import com.kingskull.lolapplication.models.database.entities.SummonerEntitie;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +41,16 @@ public class DBManaer<T extends Entitie> {
             id = db.insert(entitie.getTableName(), null, entitie.getContentValues());
             entitie.setId( (int) id );
         }
+        db.replace(entitie.getTableName(), null, entitie.getContentValues());
+        return id;
+    }
+
+    public long insertOrUpdate(T entitie, ContentValues contentValues){
+        long id = NO_INSERTED_ENTITIE;
+
+        getWritableDb();
+
+        id = db.replace(entitie.getTableName(), null, contentValues);
 
         return id;
     }
@@ -72,10 +84,35 @@ public class DBManaer<T extends Entitie> {
         if (cursor != null)
             cursor.moveToFirst();
 
-        dummyEntitie.setContentValues(cursor);
+        if (cursor.getColumnCount() > 0)
+            dummyEntitie.setContentValues(cursor);
 
         return dummyEntitie;
     }
+
+    public void delete(T entitie){
+        getWritableDb();
+
+        db.delete(entitie.getTableName(), "id = ?", new String[]{ String.valueOf(entitie.getId()) });
+    }
+
+    public SummonerEntitie getBySummonerName (SummonerEntitie entitie){
+        getReadableDb();
+
+        Cursor cursor = db.query(entitie.getTableName(), entitie.getColumnNames(), "summonername = ? AND region = ?", new String[]{entitie.getSummonername(), entitie.getRegion() }, null, null, null, null);
+
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        int count  = cursor.getCount();
+
+        if (count > 0)
+            entitie.setContentValues(cursor);
+
+        return entitie;
+    }
+
+
 
 
     public List<T> getAll(T dumEntitiie){

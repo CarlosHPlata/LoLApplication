@@ -1,6 +1,7 @@
 package com.kingskull.lolapplication.models.database.entities;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 
 /**
@@ -29,7 +30,17 @@ public class SummonerEntitie extends Entitie{
         ContentValues content = new ContentValues();
 
         content.put( COLUM_NAMES[SUMMONERNAME_POSITION], summonername );
-        content.put( COLUM_NAMES[REGION_POSITION], region );
+        content.put(COLUM_NAMES[REGION_POSITION], region);
+
+        return content;
+    }
+
+    public ContentValues getContentValuesWithId() {
+        ContentValues content = new ContentValues();
+
+        content.put( COLUM_NAMES[ID_POSITION], getId() );
+        content.put( COLUM_NAMES[SUMMONERNAME_POSITION], summonername );
+        content.put(COLUM_NAMES[REGION_POSITION], region);
 
         return content;
     }

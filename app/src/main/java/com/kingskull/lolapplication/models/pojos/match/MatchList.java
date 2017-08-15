@@ -19,7 +19,7 @@ public class MatchList implements java.io.Serializable{
         this.endIndex = endIndex;
     }
 
-    public List getMatches() {
+    public List<MatchReference> getMatches() {
         return matches;
     }
 

@@ -5,6 +5,7 @@ import android.content.Context;
 import com.kingskull.lolapplication.models.pojos.Summoner;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -17,13 +18,15 @@ public class SummonerStream {
 
     private Context context;
 
+    private static final String FILE_NAME = "synergy_sum_cache";
+
     SummonerStream(Context context){
         this.context = context;
     }
 
 
     public void save(Summoner summoner) throws IOException {
-        FileOutputStream fos = context.openFileOutput( summoner.getId()+"", Context.MODE_PRIVATE );
+        FileOutputStream fos = context.openFileOutput( FILE_NAME, Context.MODE_PRIVATE );
         ObjectOutputStream os = new ObjectOutputStream(fos);
         os.writeObject(summoner);
         os.close();
@@ -31,8 +34,8 @@ public class SummonerStream {
     }
 
 
-    public Summoner load(long id) throws IOException, ClassNotFoundException {
-        FileInputStream fis = context.openFileInput(id + "");
+    public Summoner load() throws IOException, ClassNotFoundException {
+        FileInputStream fis = context.openFileInput( FILE_NAME );
         ObjectInputStream is = new ObjectInputStream(fis);
         Summoner summoner = (Summoner) is.readObject();
         is.close();
@@ -40,4 +43,5 @@ public class SummonerStream {
 
         return summoner;
     }
+
 }
